@@ -187,7 +187,7 @@
 
     </xsl:template>
 
-    <!--латинициа, старословенски и грчки-->
+    <!--латиница, старословенски и грчки-->
 
     <xsl:template match="w:t[preceding-sibling::w:rPr[child::w:rFonts[@w:ascii='C00L' or
         @w:ascii='C00ST' or @w:ascii='C00G']]]">
@@ -466,15 +466,16 @@
     </xsl:template>
 
     <!--font replacements z.B. Times New Roman vs Cambria-->
-    <xsl:variable name="mainFont">Times New Roman</xsl:variable>
-    <!--create font replacement for OCS -\- Bukyvede vs. Izhitsa-->
+    <xsl:variable name="mainFont">Cambria</xsl:variable>
+    <!--create font replacement for Old Cyrillic z.B. Bukyvede vs. Izhitsa-->
+    <xsl:variable name="OCSFont">Bukyvede</xsl:variable>
     <xsl:template match="w:rFonts[starts-with(@w:hAnsi,'C')]">
         <xsl:variable name="code">
             <xsl:value-of select="./@w:hAnsi"></xsl:value-of>
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="$code='C00ST'">
-                <w:rFonts w:ascii='C00ST' w:hAnsi='Izhitsa'></w:rFonts>
+                <w:rFonts w:ascii='C00ST' w:hAnsi='Bukyvede'></w:rFonts>
             </xsl:when>
             <xsl:when test="$code='C00C'">
                 <xsl:element name="w:rFonts">
