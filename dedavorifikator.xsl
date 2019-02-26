@@ -4,6 +4,11 @@
     xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
     xmlns:ext="http://exslt.org/common" 
     xmlns:trans="http://transpoetika.org/ns" exclude-result-prefixes="xs trans" version="2.0" extension-element-prefixes="ext">
+    
+    <!--font mapping for Cyrillic, Latin and Greek-->
+    <xsl:variable name="mainFont">Cambria</xsl:variable>
+    <!--font mapping for Old Cyrillic-->
+    <xsl:variable name="OCSFont">Bukyvede</xsl:variable>
 
     <!--source encoding table-->
     <xsl:variable name="s33-47"><![CDATA[!"#$%&'()*+,-./]]></xsl:variable>
@@ -73,7 +78,7 @@
     <xsl:variable name="st48-63"><![CDATA[??????єѥӡꙁ:;<=>?]]></xsl:variable>
     <xsl:variable name="st64-79">ЖАБЦДЕФГХИЇКЛМНО</xsl:variable>
     <xsl:variable name="st80-95">ПЉРСТУВЊЏЪꙀШЂЋЧ_</xsl:variable>
-    <xsl:variable name="st96-111">жабцдефгхијклмно</xsl:variable>
+    <xsl:variable name="st96-111">жабцдефгхиїклмно</xsl:variable>
     <xsl:variable name="st112-126">пљрстувњџъꙁшђћч</xsl:variable>
     <xsl:variable name="st130-140">‚ꙿ„…†§ˆ[]~“</xsl:variable>
     <xsl:variable name="st145-156">‘’“”•–—˜™іı„</xsl:variable>
@@ -465,10 +470,7 @@
 
     </xsl:template>
 
-    <!--font replacements z.B. Times New Roman vs Cambria-->
-    <xsl:variable name="mainFont">Cambria</xsl:variable>
-    <!--create font replacement for Old Cyrillic z.B. Bukyvede vs. Izhitsa-->
-    <xsl:variable name="OCSFont">Bukyvede</xsl:variable>
+
     <xsl:template match="w:rFonts[starts-with(@w:hAnsi,'C')]">
         <xsl:variable name="code">
             <xsl:value-of select="./@w:hAnsi"></xsl:value-of>
@@ -524,3 +526,12 @@
     </xsl:template>
 
 </xsl:stylesheet>
+
+<!--
+    CHANGESET
+    
+    v. 1.0.0 Inital Pubic Release
+    v. 1.0.1 (2019-02-26) fixed OCS mapping of ї 
+
+-->
+
