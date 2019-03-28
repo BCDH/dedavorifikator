@@ -7,7 +7,6 @@
 
 
 #### Пример „дедаворификованог” текста
-![](https://i.imgur.com/MLPe4Un.png)
 
 ![Скриншот 2019-03-28 16.05.38](https://i.imgur.com/bp4FOOE.png)
 
