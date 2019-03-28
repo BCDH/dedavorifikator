@@ -5,6 +5,8 @@
     xmlns:ext="http://exslt.org/common" 
     xmlns:trans="http://transpoetika.org/ns" exclude-result-prefixes="xs trans" version="2.0" extension-element-prefixes="ext">
     
+    <!--VERSION: 1.0.3-->
+    
     <!--font mapping for Cyrillic, Latin and Greek-->
     <xsl:variable name="mainFont">Cambria</xsl:variable>
     <!--font mapping for Old Cyrillic-->
@@ -115,7 +117,7 @@
     <!--Greek Accents Table-->
     <xsl:variable name="latinica">aehiouwrAEHIOUWR</xsl:variable>
     <xsl:variable name="greeks">
-        <code name="C01G">ἁἑἡἱὁὑὡῥἉἙἩἹὙὉὩῬ</code>
+        <code name="C01G">ἀἐἠἰὀὐὠῤἈἘἨἸ?ὈὨ?</code>
         <code name="C02G">ἁἑἡἱὁὑὡῥἉἙἩἹὙὉὩῬ</code>
         <code name="C03G">ἄἔἤἴὄὔὤ?ἌἜἬἼὌ?Ὤ?</code>
         <code name="C04G">ἅἕἥἵὅὕὥ?ἍἝἭἽὍὝὭ?</code>
