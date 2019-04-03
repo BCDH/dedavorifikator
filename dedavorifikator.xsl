@@ -5,7 +5,7 @@
     xmlns:ext="http://exslt.org/common" 
     xmlns:trans="http://transpoetika.org/ns" exclude-result-prefixes="xs trans" version="2.0" extension-element-prefixes="ext">
     
-    <!--VERSION: 1.0.3+-->
+    <!--VERSION: 1.0.4-->
     
     <!--font mapping for Cyrillic, Latin and Greek-->
     <xsl:variable name="mainFont">Cambria</xsl:variable>
