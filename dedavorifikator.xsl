@@ -5,7 +5,7 @@
     xmlns:ext="http://exslt.org/common" 
     xmlns:trans="http://transpoetika.org/ns" exclude-result-prefixes="xs trans" version="2.0" extension-element-prefixes="ext">
     
-    <!--VERSION: 1.0.3-->
+    <!--VERSION: 1.0.3+-->
     
     <!--font mapping for Cyrillic, Latin and Greek-->
     <xsl:variable name="mainFont">Cambria</xsl:variable>
@@ -85,7 +85,7 @@
     <xsl:variable name="st130-140">‚ꙿ„…†§ˆ[]~“</xsl:variable>
     <xsl:variable name="st145-156">‘’“”•–—˜™іı„</xsl:variable>
     <xsl:variable name="st159">Ѯ</xsl:variable>
-    <xsl:variable name="st161-167">?????¦C</xsl:variable>
+    <xsl:variable name="st161-167">Чч???¦C</xsl:variable>
     <xsl:variable name="st169-179">Ѿѿ????⎺|???</xsl:variable>
     <xsl:variable name="st180-189"><![CDATA[???НҤҥ???ъ]]></xsl:variable>
     <xsl:variable name="st190-207">ы?ЯЫЬЪЮЭЩІЙѪѦꙖѨѤѬѢ</xsl:variable>
