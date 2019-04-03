@@ -129,7 +129,8 @@
         <code name="C13G">???ῒ?ῢ??????????</code>
         <code name="C14G">άέήίόύώ?ΆΈΉΊΌΎΏ?</code>
         <code name="C15G">ὰὲὴὶὸὺὼ?ᾺῈῊῚῸῪῺ?</code>
-        <code name="C16G">ἃἓἣἳὃὓὣ?ἋἛἫἻὋὛὫ?</code>
+        <code name="C16G">ᾶ?ῆῖ?ῦῶ????????</code>
+        <code name="C17G">ᾶ?ῆῖ?ῦῶ????????</code>
         <code name="C20G">ᾱ??ῑ?ῡ??Ᾱ??Ῑ?Ῡ??</code>
     </xsl:variable>
  
@@ -453,7 +454,7 @@
 
     <!--грчки акценти-->
     <xsl:template match="w:t[preceding-sibling::w:rPr[child::w:rFonts[matches(@w:ascii,
-        'C0[1-9]G') or matches(@w:ascii, 'C[1-2][0-9]G')]]]">
+        'C0[1-9]G') or matches(@w:ascii, 'C[1-2][0-58-9]G')]]]">
         <xsl:variable name="code"
             select="self::w:t/preceding-sibling::w:rPr/child::w:rFonts/@w:ascii"/>
         <xsl:variable name="greek">
@@ -469,9 +470,29 @@
                 </xsl:otherwise>
             </xsl:choose>
         </w:t>
-
     </xsl:template>
-
+    
+    <!--version with replace for use with combining diacritics-->
+    <!--combining tilde-->
+    <xsl:template match="w:t[preceding-sibling::w:rPr[child::w:rFonts[matches(@w:ascii, 'C16G')]]]">
+        <xsl:variable name="code"
+            select="self::w:t/preceding-sibling::w:rPr/child::w:rFonts/@w:ascii"/>
+        <xsl:variable name="greek">
+            <xsl:value-of select="ext:node-set($greeks)/code[@name=$code]"/>
+        </xsl:variable>
+        <w:t>   
+            <xsl:value-of select="replace(replace(replace(replace(replace(text(), 'a', 'α̃'), 'h', 'η̃'), 'i', 'ι̃'), 'u', 'υ̃'), 'w', 'ω̃')"/> 
+        </w:t>
+    </xsl:template>
+    
+  <!--  combining inverted breve-->
+    <xsl:template match="w:t[preceding-sibling::w:rPr[child::w:rFonts[matches(@w:ascii, 'C17G')]]]">
+        <w:t>   
+                    
+            <xsl:value-of select="replace(replace(replace(replace(replace(text(), 'a', 'α̑'), 'h', 'η̑'), 'i', 'ι̑'), 'u', 'υ̑'), 'w', 'ω̑')"/> 
+        </w:t>
+    </xsl:template>
+    
 
     <xsl:template match="w:rFonts[starts-with(@w:hAnsi,'C')]">
         <xsl:variable name="code">
@@ -529,11 +550,5 @@
 
 </xsl:stylesheet>
 
-<!--
-    CHANGESET
-    
-    v. 1.0.0 Inital Pubic Release
-    v. 1.0.1 (2019-02-26) fixed OCS mapping of ї 
 
--->
 
