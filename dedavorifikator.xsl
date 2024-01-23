@@ -5,7 +5,7 @@
     xmlns:ext="http://exslt.org/common" 
     xmlns:trans="http://transpoetika.org/ns" exclude-result-prefixes="xs trans" version="2.0" extension-element-prefixes="ext">
     
-    <!--VERSION: 1.0.5-->
+    <!--VERSION: 1.0.6-->
     
     <!--font mapping for Cyrillic, Latin and Greek-->
     <xsl:variable name="mainFont">Cambria</xsl:variable>
@@ -37,7 +37,7 @@
     <xsl:variable name="cextra">ъь„“ыѣ„[]</xsl:variable>
 
     <!--C00L Table-->
-    <xsl:variable name="l33-47"><![CDATA[!“#$%&'()*+,-./]]></xsl:variable>
+    <xsl:variable name="l33-47"><![CDATA[!“✝◀%◆'()*+,-./]]></xsl:variable>
     <xsl:variable name="l48-63"><![CDATA[0123456789:;<=>?]]></xsl:variable>
     <xsl:variable name="l64-79">ŽABCDEFGHIJKLMNO</xsl:variable>
     <xsl:variable name="l80-95">PQRSTUVWXYZŠĐĆČ_</xsl:variable>
@@ -57,7 +57,7 @@
 
 
     <!--C00C Table-->
-    <xsl:variable name="c33-47"><![CDATA[!“#$%№'()*+,-./]]></xsl:variable>
+    <xsl:variable name="c33-47"><![CDATA[!“✝◀%◆'()*+,-./]]></xsl:variable>
     <xsl:variable name="c48-63"><![CDATA[0123456789:;<=>?]]></xsl:variable>
     <xsl:variable name="c64-79">ЖАБЦДЕФГХИЈКЛМНО</xsl:variable>
     <xsl:variable name="c80-95">ПЉРСТУВЊЏЏЗШЂЋЧ_</xsl:variable>
@@ -95,7 +95,7 @@
     <xsl:variable name="st255">?</xsl:variable>
 
     <!--C00G Table-->
-    <xsl:variable name="g33-47"><![CDATA[!"#$%?'()*+,-./]]></xsl:variable>
+    <xsl:variable name="g33-47"><![CDATA[!"✝◀%?'()*+,-./]]></xsl:variable>
     <xsl:variable name="g48-63"><![CDATA[0123456789:;<=>?]]></xsl:variable>
     <xsl:variable name="g64-79">?ΑΒΧΔΕΦΓΗΙῳΚΛΜΝΟ</xsl:variable>
     <xsl:variable name="g80-95">ΠΘΡΣΤΥῃΩΞΨΖ[?]??</xsl:variable>
@@ -179,9 +179,10 @@
 
 
     <!-- default cyrillic -->
-    <xsl:template match="w:t[not(preceding-sibling::w:rPr[child::w:rFonts[@w:ascii='C00L' or
-        @w:ascii='C00G' or @w:ascii='C0ST' or starts-with(@w:ascii, 'C03') or starts-with(@w:ascii,
-        'C02') or starts-with(@w:ascii, 'C1')]])]">
+    <!--Note: Russian italics have a separate code point in Davor's font.
+    In Unicode, the display of the correct cursive will have to be
+    handled by setting the correct language parameter. -->
+    <xsl:template match="w:t[preceding-sibling::w:rPr[child::w:rFonts[@w:ascii='C00C' or @w:ascii='C00R' ]]]">
         <xsl:choose>
             <xsl:when test="./@xml:space">
                 <w:t xml:space="preserve"><xsl:value-of select="trans:cyr(text())"/></w:t>
